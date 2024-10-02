@@ -1,14 +1,14 @@
-import { TextInput, type TextInputProps, StyleSheet } from 'react-native';
+import { Text, type TextProps, StyleSheet } from 'react-native';
 
 import { useThemeColor } from '@/hooks/useThemeColor';
 
-export type ThemedTextInputProps = TextInputProps & {
+export type ThemedTextInputProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
   type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
 };
 
-export function ThemedTextInput({
+export function ThemedText({
   style,
   lightColor,
   darkColor,
@@ -18,9 +18,9 @@ export function ThemedTextInput({
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
   return (
-    <TextInput
+    <Text
       style={[
-        { color, ...styles.input },
+        { color },
         type === 'default' ? styles.default : undefined,
         type === 'title' ? styles.title : undefined,
         type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
@@ -34,11 +34,6 @@ export function ThemedTextInput({
 }
 
 const styles = StyleSheet.create({
-  input: {
-    padding: 10,
-    borderWidth: 1,
-    borderRadius: 5,
-  },
   default: {
     fontSize: 16,
     lineHeight: 24,
