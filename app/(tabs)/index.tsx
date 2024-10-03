@@ -1,3 +1,4 @@
+import { ThemedText } from '@/components/ThemedTextInput';
 import { ThemedView } from '@/components/ThemedView';
 import { useRouter } from 'expo-router';
 import { ImageBackground, StyleSheet, Button } from 'react-native';
@@ -8,9 +9,12 @@ export default function HomeScreen() {
 
   return (
     <ThemedView style={styles.container}>
+      <ThemedText type='title' style={styles.title}>Pokemon Guess Native</ThemedText>
       <ImageBackground source={pokeBall} resizeMode="contain" style={styles.background}>
       </ImageBackground>
-      <Button title="Play" onPress={() => router.push('/quiz')}/>
+      <ThemedView style={styles.buttonContainer}>
+        <Button color='#0a7ea4' title="Play" onPress={() => router.push('/quiz')}/>
+      </ThemedView>
     </ThemedView>
   );
 }
@@ -18,12 +22,21 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 100
   },
   background: {
     flex: 1,
     width: '100%',
     height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  title: {
+    marginTop: 50,
+    justifyContent: 'center'
+  },
+  buttonContainer: {
+    marginBottom: 100,
+    width: 100
   }
 });
