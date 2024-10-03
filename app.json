@@ -4,11 +4,11 @@
     "slug": "Pokemon-Guesser-Native",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/poke-ball.svg",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/poke-ball.svg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/ball.svg",
+        "foregroundImage": "./assets/images/poke-ball.svg",
         "backgroundColor": "#ffffff"
       }
     },

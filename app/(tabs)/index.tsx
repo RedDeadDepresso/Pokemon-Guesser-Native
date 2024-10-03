@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router';
 import { ImageBackground, StyleSheet, Button } from 'react-native';
 
 export default function HomeScreen() {
-  const pokeBall = require('@/assets/images/ball.svg');
+  const pokeBall = require('@/assets/images/poke-ball.svg');
   const router = useRouter();
 
   return (
