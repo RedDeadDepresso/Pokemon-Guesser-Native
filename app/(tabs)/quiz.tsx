@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ThemedView } from '@/components/ThemedView';
-import { ThemedText } from '@/components/ThemedTextInput';
-import { ThemedTextInput } from '@/components/ThemedText';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedTextInput } from '@/components/ThemedTextInput';
 import useRandomPokemon from '@/hooks/useRandomPokemon';
 import { ActivityIndicator, Button, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -30,6 +30,7 @@ const Quiz = () => {
   const [inputValue, setInputValue] = useState('');
   const [streak, setStreak] = useState<number>(0);
   const [highScore, setHighScore] = useState<number>(0);
+  const [unkownText, setUnknownText] = useState<string>("I don't know");
 
   useEffect(() => {
     const fetchHighScore = async () => {
@@ -47,14 +48,25 @@ const Quiz = () => {
     }
   };
 
+  const countDown = (count: number) => {
+    setUnknownText(count.toString());
+    if (count === 0) {
+      setStreak(0);
+      getRandomPokemon();
+      setInputValue('');
+      setUnknownText("I don't know");
+    } else {
+      setTimeout(() => countDown(count - 1), 1000);
+    }
+  };
+
   const handleUnknown = () => {
-    setInputValue('');
-    setStreak(0);
-    getRandomPokemon();
+    countDown(3);
+    setInputValue(data.name);
   };
 
   useEffect(() => {
-    if (data && inputValue) {
+    if (data && inputValue && unkownText === "I don't know") {
       handleCheckAnswer();
     }
   }, [inputValue]);
@@ -73,7 +85,7 @@ const Quiz = () => {
       {!loading && data && (
         <>
           <Image 
-            source={{ uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png` }} 
+            source={{ uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data?.id}.png` }} 
             style={styles.image}
           />
           <ThemedText type="subtitle">Current Streak: {streak}</ThemedText>
@@ -83,15 +95,17 @@ const Quiz = () => {
             placeholder="Enter Pokémon name"
             value={inputValue}
             onChangeText={setInputValue}
+            editable={unkownText === "I don't know"}
           />
           <ThemedView style={styles.buttonContainer}>
-            <Button color='#0a7ea4' title="I don't know" onPress={handleUnknown} />
+            <Button color='#0a7ea4' title={unkownText} disabled={unkownText !== "I don't know"} onPress={handleUnknown} />
           </ThemedView>
         </>
       )}
     </ThemedView>
   );
 };
+
 
 const styles = {
   container: {

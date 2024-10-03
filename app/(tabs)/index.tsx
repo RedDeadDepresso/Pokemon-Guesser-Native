@@ -1,4 +1,4 @@
-import { ThemedText } from '@/components/ThemedTextInput';
+import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useRouter } from 'expo-router';
 import { ImageBackground, StyleSheet, Button } from 'react-native';
