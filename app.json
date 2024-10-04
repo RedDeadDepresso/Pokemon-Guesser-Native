@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "Pokemon-Guesser-Native",
+    "name": "Pokemon Guesser Native",
     "slug": "Pokemon-Guesser-Native",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/poke-ball.svg",
+    "icon": "./assets/images/poke-ball.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/poke-ball.svg",
+      "image": "./assets/images/poke-ball.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,20 +17,26 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/poke-ball.svg",
+        "foregroundImage": "./assets/images/poke-ball.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.RedDeadDepresso.PokemonGuesserNative"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/poke-ball.png"
     },
     "plugins": [
       "expo-router"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "93fd9db9-4206-4e91-9e44-b6cbc3cca825"
+      }
     }
   }
 }

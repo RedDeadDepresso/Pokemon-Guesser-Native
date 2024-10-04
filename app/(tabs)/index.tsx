@@ -1,17 +1,17 @@
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useRouter } from 'expo-router';
-import { ImageBackground, StyleSheet, Button } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
+import PokeBall from '@/assets/images/poke-ball.svg';
+
 
 export default function HomeScreen() {
-  const pokeBall = require('@/assets/images/poke-ball.svg');
   const router = useRouter();
 
   return (
     <ThemedView style={styles.container}>
       <ThemedText type='title' style={styles.title}>Pokemon Guess Native</ThemedText>
-      <ImageBackground source={pokeBall} resizeMode="contain" style={styles.background}>
-      </ImageBackground>
+      <PokeBall style={styles.background} />
       <ThemedView style={styles.buttonContainer}>
         <Button color='#0a7ea4' title="Play" onPress={() => router.push('/quiz')}/>
       </ThemedView>
